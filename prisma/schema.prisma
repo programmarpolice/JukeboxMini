@@ -23,7 +23,7 @@ model Playlist {
   id Int @id @default(autoincrement())
   name String
   description String
-  ownerId Int
 
 user  User @relation(fields: [ownerId], references: [id])
+ownerId Int
 } 

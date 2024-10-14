@@ -4,15 +4,16 @@ const seed = async (numUsers = 3, numPlaylists = 5) => {
   for (let i = 0; i < numUsers; i++) {
     const playlists = Array.from({ length: numPlaylists }, (_, j) => {
       const name = faker.company.buzzAdjective() + " " + faker.company.buzzNoun;
+      //   const ownerId = faker.number.int({ min: 1, max: 10 });
       return {
         name,
         description: `${i}${j}Song Name`,
-        ownerId: faker.number.int({ min: 1, max: 10 }),
+        // ownerId,
       };
     });
     await prisma.user.create({
       data: {
-        username: faker.internet.displayName,
+        username: faker.internet.displayName(),
         playlists: {
           create: playlists,
         },

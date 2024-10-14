@@ -1,3 +1,9 @@
+const express = require("express");
+const router = express.Router();
+module.exports = router;
+
+const prisma = require("../prisma");
+
 router.get("/", async (req, res, next) => {
   try {
     const users = await prisma.user.findMany();
@@ -25,7 +31,6 @@ router.post("/:id/playlists", async (req, res, next) => {
   const { id } = req.params;
   const { name, description, ownerId } = req.body;
   try {
-    // partySize and restaurantId have been converted to numbers
     const playlist = await prisma.playlist.create({
       data: { name, description, ownerId: +id },
     });

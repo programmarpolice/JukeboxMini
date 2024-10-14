@@ -12,7 +12,7 @@ const seed = async (numUsers = 3, numPlaylists = 5) => {
     });
     await prisma.user.create({
       data: {
-        name: faker.internet.displayName,
+        username: faker.internet.displayName,
         playlists: {
           create: playlists,
         },
